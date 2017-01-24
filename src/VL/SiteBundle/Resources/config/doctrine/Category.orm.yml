@@ -1,0 +1,28 @@
+VL\SiteBundle\Entity\Category:
+    type: entity
+    repositoryClass: VL\SiteBundle\Repository\CategoryRepository
+    table: category
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        slug:
+            type: string
+            length: 255
+            unique: true
+
+    oneToMany:
+        arts:
+            targetEntity: Art
+            mappedBy: category
+
+    lifecycleCallbacks:
+        prePersist: [ setSlugValue ]
+
+
+

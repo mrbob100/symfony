@@ -1,0 +1,67 @@
+vl_site_vl_art:
+    resource: "@VLSiteBundle/Resources/config/routing/art.yml"
+    prefix:   /vl_art
+
+vl_site_homepage:
+    path:     /{slug}/{page}
+    defaults: { _controller: VLSiteBundle:Art:index, slug: 6, page: 1}
+    requirements:
+         slug: \d+
+
+login:
+  path:   /art/login
+ # defaults:  { _controller: VLSiteBundle:Default:login }
+  defaults:  { _controller: VLSiteBundle:Art:login }
+
+
+login_check:
+  path:   /login_check
+
+logout:
+   path: /logout
+
+#vl_site_page:
+ # path:  /art/{slug}
+ # defaults: { _controller: VLSiteBundle:Art:index }
+ # requirements:
+   #    slug: \d+
+
+vl_site_show:
+  path: /art/{slug}/{slug1}
+  defaults: { _controller: VLSiteBundle:Art:show }
+  requirements:
+       slug: \d+
+
+vl_site_index:
+  path: /comment/{slug}
+  defaults: { _controller: VLSiteBundle:Comment:index }
+  requirements:
+       slug: \d+
+
+vl_site_buy:
+  path: /user/
+  defaults: { _controller: VLSiteBundle:User:buy }
+
+vl_site_cook:
+  path: /art/
+  defaults: { _controller: VLSiteBundle:Art:cook }
+
+vl_site_display:
+ # path: /comment/{slug}/{slug1}
+  path: /comment/{slug}/
+ # defaults: { _controller: VLSiteBundle:Comment:display, slug1: null}
+  defaults: { _controller: VLSiteBundle:Comment:display}
+  requirements:
+       slug: \d+
+
+#facebook:
+#  path:   /comment/facebook
+ # defaults: { _controller: VLSiteBundle:Comment:facebook}
+
+#vkontacte:
+ # path: /comment/vkontacte
+  #defaults: { _controller: VLSiteBundle:Comment:vkontacte}
+
+vl_site_zakaz:
+  path: /user/zakaz
+  defaults: { _controller: VLSiteBundle:User:zakaz}

@@ -1,0 +1,73 @@
+VL\SiteBundle\Entity\Art:
+    type: entity
+    repositoryClass: VL\SiteBundle\Repository\ArtRepository
+    table: art
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        type:
+            type: string
+            length: 255
+            nullable: true
+        author:
+            type: string
+            length: 255
+        nick_name:
+            type: string
+            length: 255
+            nullable: true
+        nazvanie:
+            type: string
+            length: 255
+            nullable: true
+
+        short_cont:
+            type: text
+            nullable: true
+        content:
+            type: text
+            nullable: true
+        img:
+            type: text
+            nullable: true
+        token:
+            type: string
+            length: 255
+            unique: true
+
+        is_public:
+            type: boolean
+            nullable: true
+
+
+        created_at:
+            type: datetime
+
+
+        keywords:
+            type: string
+            length: 100
+            nullable: true
+
+        descriptin:
+            type: string
+            length: 255
+            nullable: true
+
+    oneToMany:
+        comments:
+            targetEntity: Comment
+            mappedBy: art
+
+    manyToOne:
+        category:
+            targetEntity: Category
+            inversedBy: arts
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+
+    lifecycleCallbacks:
+        prePersist: [setTokenValue, setCreatedAtValue, setTypeAtValue ]

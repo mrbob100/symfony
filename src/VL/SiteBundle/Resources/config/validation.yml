@@ -1,0 +1,11 @@
+VL\SiteBundle\Entity\Comment:
+    properties:
+        # ...
+        file:
+            - Image: ~
+        name:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+        url:
+            - Url: ~

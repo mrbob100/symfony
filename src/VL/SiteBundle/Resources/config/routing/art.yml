@@ -1,0 +1,30 @@
+vl_art:
+    path:     /
+    defaults: { _controller: "VLSiteBundle:Art:index" }
+
+vl_art_show:
+    path:     /art/{slug}/show
+    defaults: { _controller: "VLSiteBundle:Art:show" }
+
+vl_art_new:
+    path:     /new
+    defaults: { _controller: "VLSiteBundle:Art:new" }
+
+vl_art_create:
+    path:     /create
+    defaults: { _controller: "VLSiteBundle:Art:create" }
+    methods:  POST
+
+vl_art_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VLSiteBundle:Art:edit" }
+
+vl_art_update:
+    path:     /{id}/update
+    defaults: { _controller: "VLSiteBundle:Art:update" }
+    methods:  [POST, PUT]
+
+vl_art_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VLSiteBundle:Art:delete" }
+    methods:  [POST, DELETE]

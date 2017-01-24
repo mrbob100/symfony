@@ -1,0 +1,67 @@
+VL\SiteBundle\Entity\User:
+  type: entity
+  repositoryClass: VL\SiteBundle\Repository\UserRepository
+  table: user
+  id:
+      id:
+          type: integer
+          generator: { strategy: AUTO }
+  fields:
+      username:
+          type: string
+          length: 100
+          unique: true
+      password:
+          type: string
+          length: 100
+
+      first_name:
+          type: string
+          length: 100
+          nullable: true
+
+      last_name:
+          type: string
+          length: 100
+          nullable: true
+
+      created_at:
+          type: datetime
+
+      expired_at:
+          type: datetime
+
+      salt:
+          type: string
+          length: 100
+          nullable: true
+      email:
+          type: string
+          length: 255
+
+      ip_address:
+          type: string
+          length: 255
+          nullable: true
+
+      numContract:
+          type: string
+          length: 10
+          nullable: true
+
+      strokaContract:
+          type: string
+          length: 255
+          nullable: true
+
+  oneToMany:
+      lessons:
+          targetEntity: Lesson
+          mappedBy: user
+
+
+
+
+
+  lifecycleCallbacks:
+      prePersist: [ setCreatedAtValue, setExpiredAtValue  ]

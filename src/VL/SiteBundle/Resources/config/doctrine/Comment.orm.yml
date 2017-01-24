@@ -1,0 +1,54 @@
+VL\SiteBundle\Entity\Comment:
+    type: entity
+    repositoryClass: VL\SiteBundle\Repository\CommentRepository
+    table: comment
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+
+
+        email:
+            type: string
+            length: 100
+
+        created:
+            type: datetime
+
+        site_id:
+            type: string
+            length: 255
+
+
+        content:
+            type: text
+
+
+        logo:
+            type: string
+            length: 255
+            nullable: true
+        url:
+            type: string
+            length: 255
+            nullable: true
+
+    manyToOne:
+        art:
+            targetEntity: Art
+            inversedBy: comments
+            joinColumn:
+                 name: art_id
+                 referencedColumnName: id
+
+
+    lifecycleCallbacks:
+            prePersist: [preUpload, setCreatedAtValue ]
+            preUpdate: [ preUpload, setUpdatedAtValue ]
+            postPersist: [ upload ]
+            postUpdate: [ upload ]
+            postRemove: [ removeUpload ]

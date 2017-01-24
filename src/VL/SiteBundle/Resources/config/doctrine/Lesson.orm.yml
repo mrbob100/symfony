@@ -1,0 +1,41 @@
+VL\SiteBundle\Entity\Lesson:
+    type: entity
+    repositoryClass: VL\SiteBundle\Repository\LessonRepository
+    table: lesson
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 100
+            unique: true
+        content:
+            type: text
+            nullable: true
+        price:
+            type: float(11,2)
+            nullable: true
+        keywords:
+            type: string
+            length: 100
+            nullable: true
+
+        description:
+            type: string
+            length: 100
+            nullable: true
+
+
+
+
+    manyToOne:
+        users:
+              targetEntity: User
+              inversedBy: lessons
+              joinColumn:
+                  name: user_id
+                  referencedColumnName: id
+
+    lifecycleCallbacks:

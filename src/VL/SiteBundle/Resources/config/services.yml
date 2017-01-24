@@ -1,0 +1,58 @@
+services:
+#    vl_site.example:
+#        class: VL\SiteBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+   vl.site.admin.category:
+       class: VL\SiteBundle\Admin\CategoryAdmin
+       tags:
+           - { name: sonata.admin, manager_type: orm, group: site, label: "Категории" }
+       arguments:
+           - ~
+           - VL\SiteBundle\Entity\Category
+           - 'VLSiteBundle:CategoryAdmin'
+
+   vl.site.admin.art:
+       class: VL\SiteBundle\Admin\ArtAdmin
+       tags:
+           - { name: sonata.admin, manager_type: orm, group: site, label: "Статьи" }
+       arguments:
+           - ~
+           - VL\SiteBundle\Entity\Art
+           - 'VLSiteBundle:ArtAdmin'
+
+   vl.site.admin.lesson:
+       class: VL\SiteBundle\Admin\LessonAdmin
+       tags:
+           - { name: sonata.admin, manager_type: orm, group: site, label: "Уроки" }
+       arguments:
+           - ~
+           - VL\SiteBundle\Entity\Lesson
+           - 'VLSiteBundle:LessonAdmin'
+   vl.site.admin.comment:
+       class: VL\SiteBundle\Admin\CommentAdmin
+       tags:
+           - { name: sonata.admin, manager_type: orm, group: site, label: "Комментарии" }
+       arguments:
+           - ~
+           - VL\SiteBundle\Entity\Comment
+           - 'VLSiteBundle:CommentAdmin'
+
+
+   vl.site.admin.user:
+       class: VL\SiteBundle\Admin\UserAdmin
+       tags:
+           - { name: sonata.admin, manager_type: orm, group: site, label: "Пользователи" }
+       arguments:
+           - ~
+           - VL\SiteBundle\Entity\User
+           - 'VLSiteBundle:UserAdmin'
+
+  # mailer:
+   #    class: VL\SiteBundle\Mailer
+    #   arguments: [sendmail]
+
+services:
+  kernel.event_listener.json_request_transformer:
+    class: Qandidate\Common\Symfony\HttpKernel\EventListener\JsonRequestTransformerListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }

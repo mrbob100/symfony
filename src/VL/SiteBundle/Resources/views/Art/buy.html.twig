@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/vlsite/css/arts.css') }}" type="text/css" media="all">
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'menu_1.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 slon container-fluid">
+                <div >
+                    {#  <ul id="entities"> #}
+                    {#  % for entity in glavnaya % #}
+                    <div><h4> {{  entity.name| raw }}</h4></div>
+                    <div >{{  entity.content| raw }}</div>
+                    <div><h4>      {{ entity.price|raw  }}<p> Гривен</p></h4></div>
+
+                    <div class="list-inline ">
+                        <a class="list-inline-item sep" href="{{ path('vl_site_buy', {  'slug1' : entity.id } ) }}"><i class="fa fa-cog fa-spin"></i> В корзину</a>
+                        <a class="list-inline-item" href="{{ path('vl_site_buy', {  'slug1' : entity.id } )}}"><i class="fa fa-refresh fa-spin"></i>Обнулить заказ </a>
+                        <a class="list-inline-item" href="{{ path('vl_site_buy', { 'slug' :entity.id , 'slug1' : 'yes' } ) }}"><i class="fa fa-cog fa-spin"></i>Отправить счет</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 fag1">
+                <div class="perl"><h4>Matlab видеоканал</h4>
+                    <h4>matlab-video</h4>
+                    <a  href="{{ asset('https://www.youtube.com/channel/UCtuwVWw9H06uaTadcyO570A') }}" target="matlab">  <img src="{{ asset('bundles/vlsite/images/youtube.png') }}"  alt="symfony" /> </a>
+                </div>
+                <div class="thumbnail"><img src="http://placehold.it/270x480" alt="">
+                </div>
+                <div class="thumbnail"><img src="http://placehold.it/270x480" alt="">
+                </div>
+                <div class="thumbnail"><img src="http://placehold.it/270x240" alt="">
+                </div>
+
+            </div>
+
+            {# </ul>#}
+
+            {# % endfor % #}
+        </div>
+    </div>
+{% endblock %}

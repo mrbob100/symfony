@@ -1,0 +1,8 @@
+{% set label = label is defined ? label : 'sign_via_social'|trans({}, 'UloginAuthBundle') %}
+
+<script src="//ulogin.ru/js/ulogin.js"></script>
+
+<span>{{ label }}</span>
+{% set id = uLoginID ~ '_' ~ random() %}
+<div id="{{ id }}" data-uloginid="{{ uLoginID }}" data-ulogin="redirect_uri={{ url("ulogin_auth_index",{"backurl":path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))})|url_encode }}"></div>
+<script>uLogin.customInit('{{ id }}');</script>

@@ -1,0 +1,82 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/font-awesome.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset('bundles/vlsite/css/main.css') }}" type="text/css" media="all">
+    <script src="{{ asset('bootstrap/js/jquery-1.11.1.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/jquery-2.1.1.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/vlsite/css/arts.css') }}" type="text/css" media="all">
+    <script src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        // Загружаем jQuery
+        google.load("jquery", "1.2.6");
+    </script>
+
+    <script src="{{ asset('bundles/vlsite/js/zakaz.js') }}"></script>
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'menu_1.html.twig' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container dolly">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12  container-fluid">
+
+                <table class="table table-bordered table-condensed ">
+                    <tbody>
+                    <tr class="info">
+
+                        <td rowspan="2"></td><td colspan="2"><p>Отримувач платежу</p><p><strong> Похваліт В.М </strong></p> </td>
+                    </tr>
+                    <tr class="info">
+                        <td class="slim3">37390910404</td><td class="slim4">09322277</td>
+                    </tr>
+                    <tr class="active">
+                        <td rowspan="5" class="slim4 info">Повідомлення</td>
+                        <td rowspan="2"><p class="slim1">Поточний рахунок</p> <p>Установа банку ТВБВ №10026/0112ГУ АТ</p><p> "Ощадбанк" по місту Києву та КиЇвський обл.</p></td>
+                        <td class="slim2">Код ЄДРПОУ </td>
+                    </tr>
+                    <tr class="info">
+                        <td ><p class="slim5">322669</p><p class="slim2">МФО банку</p></td>
+
+
+                    </tr>
+                    <tr class="active">
+                        <td colspan="2"> <p>Прізвище, ім'я та по-батькові,<strong> {{ space }}{{ name }}{{ space }}{{ fio }}</strong></p><p> адреса платника:</p> </td>
+                    </tr>
+                    <tr class="info">
+
+                        <td><p> <strong> Вид платежу: </strong></p></td>
+                        <td><p><strong> Сумма: {{ space }} {{ sum }}{{ space }}грн.</strong> </p></td>
+                    </tr>
+                    <tr class="active">
+
+                        <td><p>Оплата уроків згідно рахунку № {{ space }}{{ contract }}</p>
+                            <p>За уроки №{{ space }}{{ lessons }}</p>
+                            <p>від{{ space }}{{ mydate|date('d-m-Y') }}</p> <p>(без ПДВ)</p> </td>
+                        <td></td>
+                    </tr>
+                    <tr class="info">
+                        <td rowspan="2" class="slim4">Касир</td>
+                        <td class="slim4"><p>Всього</p></td>
+                        <td><strong> {{ sum }}{{ space }}грн.</strong></td>
+                    </tr>
+                    <tr class="active">
+
+                        <td colspan="2" class="slim4"><p>Платник</p></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+                <p><span>  Внимание! После получения подтверждения об уплате, Вам будет открыта ссылка на скачивание уроков</span></p>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
